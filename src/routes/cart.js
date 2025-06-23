@@ -1,0 +1,51 @@
+import express from "express";
+import Product from "../mongoose/schemas/product.js";
+import { getCartItems, addCartItem } from "../services/cart.service.js";
+import { validateSchema, attachData } from "../utils/middlewares.js";
+import { addCartItemBodySchema } from "../utils/validationSchemas.js";
+
+const router = express.Router();
+
+router.get("/api/cart", async (req, res) => {
+  try {
+    const userId = req.user?.id;
+    const sessionId = req.session.id;
+    const items = await getCartItems({ userId, sessionId });
+    return res.status(200).json(items);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+});
+
+router.post(
+  "/api/cart",
+  validateSchema(addCartItemBodySchema),
+  attachData,
+  async (req, res) => {
+    const { productId, quantity } = res.locals.data;
+    console.log(productId, quantity);
+    try {
+      const product = await Product.findById(productId);
+      if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+      }
+      if (product.quantity < quantity) {
+        return res.status(400).json({ error: "Not enough stock" });
+      }
+      const userId = req.user?.id;
+      const sessionId = req.session.id;
+      const updatedCart = await addCartItem({
+        userId,
+        sessionId,
+        productId,
+        quantity,
+      });
+      req.session.cartId = updatedCart._id;
+      return res.status(201).json(updatedCart);
+    } catch (err) {
+      return res.status(404).json({ error: err.message });
+    }
+  }
+);
+
+export default router;
