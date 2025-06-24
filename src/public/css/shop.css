@@ -11,7 +11,7 @@
 
 .products-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, 250px);
   justify-content: center;
   gap: 1.5rem;
   border-radius: 5px;
@@ -58,6 +58,34 @@
   font-size: 1rem;
 }
 
+.product-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+
 .add-to-cart button {
   height: 40px;
+  color: white;
+}
+
+.product-button.add {
+  background-color: rgb(43, 116, 252);
+  flex: 1;
+}
+
+.favorite {
+  background-color: transparent;
+  padding: 0;
+  width: 40px;
+}
+
+.favorite i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: rgb(46, 46, 46);
 }

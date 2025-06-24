@@ -43,11 +43,13 @@ app.use(
     secret: "This is a dev secret",
     saveUninitialized: false,
     resave: false,
+    rolling: true,
     cookie: {
       maxAge: 1000 * 60 * 30,
     },
     store: MongoStore.create({
       client: mongoose.connection.getClient(),
+      ttl: 1000 * 60 * 30,
     }),
   })
 );
@@ -68,6 +70,10 @@ app.get("/shop", (req, res) => {
 
 app.get("/cart", (req, res) => {
   res.status(200).sendFile(path.join(HTML_PATH, "cart.html"));
+});
+
+app.get("/login", (req, res) => {
+  res.status(200).sendFile(path.join(HTML_PATH, "login.html"));
 });
 
 // Start listening for incoming requests

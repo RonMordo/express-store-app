@@ -1,4 +1,5 @@
 import Cart from "../mongoose/schemas/cart.js";
+import productsService from "./products.service.js";
 
 export const fetchCart = async ({ userId, sessionId }) => {
   const filter = userId ? { userId } : { sessionId };
@@ -12,7 +13,12 @@ export const getCartItems = async ({ userId, sessionId }) => {
     err.status = 404;
     throw err;
   }
-  return cart.items;
+  const cartItems = [];
+  for (const cartItem of cart.items) {
+    const product = await productsService.getProduct(cartItem.productId);
+    cartItems.push(product);
+  }
+  return cartItems;
 };
 
 export const addCartItem = async ({
@@ -40,5 +46,15 @@ export const addCartItem = async ({
       items: [{ productId, quantity }],
     });
     return newCart.save();
+  }
+};
+
+export const removeCartItem = async ({ userId, sessionId, productId }) => {
+  try {
+    const cart = await fetchCart({ userId, sessionId });
+    cart.items.pull({ productId });
+    await cart.save();
+  } catch (err) {
+    console.log("Error deleting cart item", err);
   }
 };

@@ -1,0 +1,29 @@
+.product-button.remove {
+  background-color: red;
+  flex: 1;
+}
+
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart a {
+  background-color: rgb(43, 116, 252);
+  height: 60px;
+  width: 80%;
+  border-radius: 100px;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  color: white;
+}
+
+.empty-cart span {
+  font-size: 1.3rem;
+  font-weight: 600;
+}

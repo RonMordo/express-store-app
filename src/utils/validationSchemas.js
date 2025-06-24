@@ -46,17 +46,13 @@ export const createUserBodySchema = {
 };
 
 export const loginUserBodySchema = {
-  username: {
+  email: {
     in: ["body"],
     isString: {
-      errorMessage: "Username must be a string",
+      errorMessage: "Email must be a string",
     },
     notEmpty: {
-      errorMessage: "Username cant be empty",
-    },
-    isLength: {
-      options: { min: 5, max: 15 },
-      errorMessage: "Username must contain 5-15 characters",
+      errorMessage: "Email cant be empty",
     },
   },
   password: {
@@ -130,6 +126,18 @@ export const addCartItemBodySchema = {
     toInt: true,
     notEmpty: {
       errorMessage: "Quantity cant be empty",
+    },
+  },
+};
+
+export const deleteCartItemSchema = {
+  productId: {
+    in: ["body"],
+    isString: {
+      errorMessage: "Product ID must be a string",
+    },
+    notEmpty: {
+      errorMessage: "Product ID cant be empty",
     },
   },
 };

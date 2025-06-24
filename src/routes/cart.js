@@ -1,8 +1,15 @@
 import express from "express";
 import Product from "../mongoose/schemas/product.js";
-import { getCartItems, addCartItem } from "../services/cart.service.js";
+import {
+  getCartItems,
+  addCartItem,
+  removeCartItem,
+} from "../services/cart.service.js";
 import { validateSchema, attachData } from "../utils/middlewares.js";
-import { addCartItemBodySchema } from "../utils/validationSchemas.js";
+import {
+  addCartItemBodySchema,
+  deleteCartItemSchema,
+} from "../utils/validationSchemas.js";
 
 const router = express.Router();
 
@@ -44,6 +51,24 @@ router.post(
       return res.status(201).json(updatedCart);
     } catch (err) {
       return res.status(404).json({ error: err.message });
+    }
+  }
+);
+
+router.delete(
+  "/api/cart",
+  validateSchema(deleteCartItemSchema),
+  attachData,
+  async (req, res) => {
+    try {
+      const { productId } = res.locals.data;
+      const userId = req.user?.id;
+      const sessionId = req.session.id;
+      await removeCartItem({ userId, sessionId, productId });
+      return res.sendStatus(204);
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json({ error: err });
     }
   }
 );

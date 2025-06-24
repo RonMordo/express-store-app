@@ -29,8 +29,11 @@ const createProductElement = ({
             <p><strong>Rating:</strong> ${rating}</p>
         </figcaption>
         <div class='add-to-cart'>
-            <p><strong>${price}</strong>$</p>
-            <button data-id='${_id}' class='add-product-button'><strong>Add to cart</strong></button>
+            <p><strong>${price}$</strong></p>
+            <div class='product-controls'>
+            <button data-product-id='${_id}' class='product-button add'><strong>Add to cart</strong></button>
+            <button class='favorite'><i class="fa-regular fa-star"></i></button>           
+            </div>
         </div>
         <div class='loading-overlay' hidden>
           <div class='loading-spinner'></div>
@@ -39,7 +42,7 @@ const createProductElement = ({
   productsContainer.appendChild(productElement);
 };
 
-const onAddToCart = async (id, button) => {
+const onAddToCart = async (productId, button) => {
   const productContainer = button.closest(".product");
   const overlay = productContainer.querySelector(".loading-overlay");
   try {
@@ -51,7 +54,7 @@ const onAddToCart = async (id, button) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        productId: id,
+        productId,
         quantity: 1,
       }),
     });
@@ -76,10 +79,10 @@ const initShop = async () => {
   try {
     const products = await fetchProducts();
     products.forEach((product) => createProductElement(product));
-    const addProductButtons = document.querySelectorAll(".add-product-button");
+    const addProductButtons = document.querySelectorAll(".product-button.add");
     addProductButtons.forEach((button) =>
       button.addEventListener("click", (e) =>
-        onAddToCart(button.dataset.id, e.target)
+        onAddToCart(button.dataset.productId, e.target)
       )
     );
   } catch (err) {

@@ -13,20 +13,24 @@ passport.deserializeUser(async (id, done) => {
     if (!user) throw new Error("User not found");
     done(null, user);
   } catch (err) {
-    done(err, null);
+    done(err);
   }
 });
 
 passport.use(
-  new strategy(async (username, password, done) => {
+  new strategy({ usernameField: "email" }, async (email, password, done) => {
     try {
-      const userFound = await User.findOne({ username });
-      if (!userFound) throw new Error("User not found");
+      const userFound = await User.findOne({ email });
+      if (!userFound) {
+        return done(null, false, { message: "User not found" });
+      }
       const matched = await comparePasswords(password, userFound.password);
-      if (!matched) throw new Error("Bad credentials");
+      if (!matched) {
+        return done(null, false, { message: "Bad crendetials" });
+      }
       done(null, userFound);
     } catch (err) {
-      done(err, null);
+      done(err);
     }
   })
 );

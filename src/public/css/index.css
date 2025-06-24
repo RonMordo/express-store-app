@@ -46,8 +46,6 @@ select {
 }
 
 button {
-  background-color: rgb(43, 116, 252);
-  color: white;
   border: none;
   padding: 0.3rem;
   border-radius: 5px;

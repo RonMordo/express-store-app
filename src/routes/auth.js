@@ -28,9 +28,25 @@ router.post(
 router.post(
   "/api/auth/login",
   validateSchema(loginUserBodySchema),
-  passport.authenticate("local"),
-  (req, res) => {
-    res.sendStatus(200);
+  (req, res, next) => {
+    console.log("/api/auth/login");
+
+    passport.authenticate("local", (err, user, info) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      if (!user) {
+        return res.status(401).json({ error: info?.message || "Unauthorized" });
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          console.log("logIn err");
+          return res.status(500).json({ error: err.message });
+        }
+        console.log("Success");
+        return res.sendStatus(200);
+      });
+    })(req, res, next);
   }
 );
 

@@ -3,21 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/shop.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <title>Shop | BitBasket</title>
+    <!-- <link rel="stylesheet" href="/css/login.css" /> -->
+    <title>Document</title>
   </head>
   <body>
     <div class="app">
       <header>
         <nav>
           <div class="nav-left">
-            <a href="/index.html">
+            <a href="/">
               <img src="/assets/logo.png" alt="Logo" />
             </a>
           </div>
@@ -46,9 +42,22 @@
             <p class="slogen">A new <span>HOME</span> for shopping</p>
           </div>
         </section>
-        <section class="interface">
-          <h2>Happy Shopping!</h2>
-          <div class="products-container"></div>
+        <section class="login-form">
+          <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Email" required />
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <div class="form-controls">
+              <button type="submit">Submit</button>
+              <button type="reset">Clear</button>
+            </div>
+          </form>
         </section>
       </main>
       <footer class="site-footer">
@@ -83,6 +92,6 @@
         </div>
       </footer>
     </div>
-    <script type="module" src="/js/shop.js"></script>
+    <script type="module" src="/js/login.js"></script>
   </body>
 </html>
