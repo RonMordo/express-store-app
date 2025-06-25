@@ -57,7 +57,7 @@ app.use(
     },
     store: MongoStore.create({
       // client: mongoose.connection.getClient(),
-      client: uri,
+      mongoUrl: uri,
       ttl: 1000 * 60 * 30,
     }),
   })
