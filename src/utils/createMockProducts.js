@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 import Product from "../mongoose/schemas/product.js";
+import dotenv from "dotenv";
 
-const dbUri = "mongodb://localhost/shopping-app";
+dotenv.config();
+
+// const dbUri = "mongodb://localhost/shopping-app";
+const dbUri = process.env.MONGODB_URI;
 
 const fetchProducts = async () => {
   try {

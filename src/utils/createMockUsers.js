@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 import User from "../mongoose/schemas/user.js";
 import { hashPassword } from "./helpers.js";
+import dotenv from "dotenv";
 
-const dbUri = "mongodb://localhost/shopping-app";
+dotenv.config();
+// const dbUri = "mongodb://localhost/shopping-app";
+const dbUri = process.env.MONGODB_URI;
 
 const rawPasswords = [
   "password1",

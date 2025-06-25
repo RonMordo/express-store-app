@@ -9,6 +9,9 @@ import router from "./src/routes/index.js";
 import chalk from "chalk";
 import path from "path";
 import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // __dirname setup for ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -25,8 +28,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Connect to mongodb
+const uri =
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGODB_URI
+    : "mongodb://localhost/shopping-app";
+
 mongoose
-  .connect("mongodb://localhost/shopping-app")
+  .connect(uri)
   .then(() => {
     console.log(chalk.cyan("Connected to MongoDB"));
   })
