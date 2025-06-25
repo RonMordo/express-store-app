@@ -1,3 +1,5 @@
+import utils from "./utils.js";
+
 const fetchCartItems = async () => {
   const response = await fetch("/api/cart");
   if (!response.ok) {
@@ -98,6 +100,7 @@ const onRemoveItem = async (productId, button) => {
 };
 
 const initCart = async () => {
+  utils.checkAndRenderAuth();
   await renderCart();
   const removeProductButtons = document.querySelectorAll(
     ".product-button.remove"

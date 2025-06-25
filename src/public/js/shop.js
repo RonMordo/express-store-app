@@ -1,3 +1,5 @@
+import utils from "./utils.js";
+
 const fetchProducts = async () => {
   try {
     const response = await fetch(`/api/products`);
@@ -76,6 +78,7 @@ const onAddToCart = async (productId, button) => {
 };
 
 const initShop = async () => {
+  utils.checkAndRenderAuth();
   try {
     const products = await fetchProducts();
     products.forEach((product) => createProductElement(product));

@@ -17,7 +17,7 @@ const onSubmit = async (e) => {
       throw error;
     }
     console.log("Success");
-    window.location.href = "/shop";
+    window.location.href = "/";
   } catch (err) {
     console.log(err);
     e.target.reset();
@@ -26,7 +26,7 @@ const onSubmit = async (e) => {
 
 const initLogin = async () => {
   document
-    .getElementById("login-form")
+    .querySelector(".login.form")
     .addEventListener("submit", (e) => onSubmit(e));
 };
 
