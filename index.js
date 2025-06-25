@@ -56,7 +56,8 @@ app.use(
       maxAge: 1000 * 60 * 30,
     },
     store: MongoStore.create({
-      client: mongoose.connection.getClient(),
+      // client: mongoose.connection.getClient(),
+      client: uri,
       ttl: 1000 * 60 * 30,
     }),
   })
