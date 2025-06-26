@@ -1,4 +1,5 @@
 import User from "../mongoose/schemas/user.js";
+import productService from "./products.service.js";
 import { hashPassword } from "../utils/helpers.js";
 
 const getAllUsers = async () => {
@@ -30,19 +31,29 @@ const getUserById = async (userId) => {
   }
 };
 
-const createNewUser = async ({ email, username, password, displayName }) => {
+const emailExists = async ({ email }) => {
+  try {
+    const user = await User.exists({ email });
+    return user ? true : false;
+  } catch (err) {
+    const error = new Error(err);
+    error.status(500);
+    throw error;
+  }
+};
+
+const createNewUser = async ({ email, name, password }) => {
   try {
     const hashedPassword = await hashPassword(password);
     const newUser = new User({
       email,
-      username,
+      name,
       password: hashedPassword,
-      displayName,
     });
     return await newUser.save();
   } catch (err) {
     if (err.code === 11000) {
-      const error = new Error("Email or username already exists");
+      const error = new Error("Email already exists");
       error.status = 409; // Conflict
       throw error;
     }
@@ -67,10 +78,51 @@ const deleteUser = async (userId) => {
   return deletedUser;
 };
 
+const addProductToFavorites = async ({ userId, productId }) => {
+  try {
+    await productService.getProduct(productId);
+    await User.findByIdAndUpdate(userId, {
+      $addToSet: { favorites: productId },
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.status = 500;
+    throw error;
+  }
+};
+
+const removeProductFromFavorites = async ({ userId, productId }) => {
+  try {
+    console.log(userId, productId);
+    await User.findByIdAndUpdate(userId, {
+      $pull: { favorites: productId },
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.status = 500;
+    throw error;
+  }
+};
+
+const getFavorites = async (userId) => {
+  try {
+    const user = await User.findById(userId).populate("favorites");
+    return user.favorites;
+  } catch (err) {
+    const error = new Error("Error fetching favorites");
+    error.status = 500;
+    throw error;
+  }
+};
+
 export default {
   createNewUser,
   getAllUsers,
   getUserById,
   updateUser,
   deleteUser,
+  emailExists,
+  addProductToFavorites,
+  getFavorites,
+  removeProductFromFavorites,
 };

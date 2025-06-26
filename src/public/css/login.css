@@ -5,7 +5,7 @@
   border-radius: 10px;
 }
 
-.login.form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,9 +50,20 @@ input:focus {
   background-color: rgb(123, 169, 255);
   width: 100px;
   color: white;
-  outline-color: white;
 }
 
 .form-controls button:focus {
   outline: 1px solid white;
+}
+
+.form-group .input-error {
+  border: 2px solid red;
+}
+
+.form-group .input-ok {
+  border: 2px solid rgb(15, 196, 15);
+}
+
+main {
+  gap: 0;
 }

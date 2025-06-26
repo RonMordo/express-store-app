@@ -6,18 +6,23 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  username: {
+  name: {
     type: mongoose.Schema.Types.String,
     required: true,
-    unique: true,
   },
   password: {
     type: mongoose.Schema.Types.String,
     required: true,
   },
-  displayName: {
-    type: mongoose.Schema.Types.String,
-    required: true,
+  favorites: {
+    type: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        required: true,
+      },
+    ],
+    default: [],
   },
 });
 

@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="stylesheet" href="/css/shop.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <title>About | BitBasket</title>
+    <title>Favorites | BitBasket</title>
   </head>
   <body>
     <div class="app">
@@ -50,67 +51,9 @@
             <p class="slogen">A new <span>HOME</span> for shopping</p>
           </div>
         </section>
-
-        <section class="about-content">
-          <div class="about-story">
-            <h2>Our Story</h2>
-            <p>
-              BitBasket was founded with a simple mission: to make online
-              shopping as easy, enjoyable, and efficient as possible. We've
-              combined intuitive design, curated products, and powerful
-              logistics to bring you a marketplace that just works.
-            </p>
-          </div>
-
-          <div class="about-values">
-            <h2>Our Values</h2>
-            <ul>
-              <li>
-                <strong>Customer First:</strong> We prioritize your experience
-                above all.
-              </li>
-              <li>
-                <strong>Fast Delivery:</strong> We work with the best couriers
-                to get your orders fast.
-              </li>
-              <li>
-                <strong>Innovation:</strong> We’re constantly improving our
-                platform to better serve you.
-              </li>
-            </ul>
-          </div>
-
-          <div class="about-team">
-            <h2>Meet the Team</h2>
-            <p>
-              We're a small, passionate team of developers, designers, and
-              product managers committed to building the best shopping
-              experience online.
-            </p>
-            <div class="team-members">
-              <figure class="member">
-                <img src="/assets/team-member1.png" alt="" />
-                <figcaption>
-                  <strong>Liam Carter</strong>
-                  <span>Lead Frontend Engineer</span>
-                </figcaption>
-              </figure>
-              <figure class="member">
-                <img src="/assets/team-member3.png" alt="" />
-                <figcaption>
-                  <strong>Sophie Blake</strong>
-                  <span>Founder & CEO</span>
-                </figcaption>
-              </figure>
-              <figure class="member">
-                <img src="/assets/team-member2.png" alt="" />
-                <figcaption>
-                  <strong>Ethan Brooks</strong>
-                  <span>Customer Experience Manager</span>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
+        <section class="interface">
+          <h2>Favorite Products</h2>
+          <div class="products-container"></div>
         </section>
       </main>
 
@@ -146,6 +89,6 @@
         </div>
       </footer>
     </div>
-    <script type="module" src="/js/about.js"></script>
+    <script type="module" src="/js/favorites.js"></script>
   </body>
 </html>

@@ -15,10 +15,7 @@ dotenv.config();
 
 // __dirname setup for ESM
 const __filename = fileURLToPath(import.meta.url);
-console.log(import.meta.url);
-console.log(__filename);
 const __dirname = path.dirname(__filename);
-console.log(__dirname);
 const HTML_PATH = path.join(__dirname, "src/public/html");
 
 // Init express app
@@ -82,6 +79,18 @@ app.get("/cart", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.status(200).sendFile(path.join(HTML_PATH, "login.html"));
+});
+
+app.get("/register", (req, res) => {
+  res.status(200).sendFile(path.join(HTML_PATH, "register.html"));
+});
+
+app.get("/success-auth", (req, res) => {
+  res.status(200).sendFile(path.join(HTML_PATH, "success-auth.html"));
+});
+
+app.get("/favorites", (req, res) => {
+  res.status(200).sendFile(path.join(HTML_PATH, "favorites.html"));
 });
 
 // Start listening for incoming requests

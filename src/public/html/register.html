@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="stylesheet" href="/css/login.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <title>About | BitBasket</title>
+    <title>Register | BitBusket</title>
   </head>
   <body>
     <div class="app">
@@ -42,7 +42,6 @@
           </div>
         </nav>
       </header>
-
       <main>
         <section class="banner">
           <div class="banner-content">
@@ -50,70 +49,32 @@
             <p class="slogen">A new <span>HOME</span> for shopping</p>
           </div>
         </section>
-
-        <section class="about-content">
-          <div class="about-story">
-            <h2>Our Story</h2>
-            <p>
-              BitBasket was founded with a simple mission: to make online
-              shopping as easy, enjoyable, and efficient as possible. We've
-              combined intuitive design, curated products, and powerful
-              logistics to bring you a marketplace that just works.
-            </p>
-          </div>
-
-          <div class="about-values">
-            <h2>Our Values</h2>
-            <ul>
-              <li>
-                <strong>Customer First:</strong> We prioritize your experience
-                above all.
-              </li>
-              <li>
-                <strong>Fast Delivery:</strong> We work with the best couriers
-                to get your orders fast.
-              </li>
-              <li>
-                <strong>Innovation:</strong> We’re constantly improving our
-                platform to better serve you.
-              </li>
-            </ul>
-          </div>
-
-          <div class="about-team">
-            <h2>Meet the Team</h2>
-            <p>
-              We're a small, passionate team of developers, designers, and
-              product managers committed to building the best shopping
-              experience online.
-            </p>
-            <div class="team-members">
-              <figure class="member">
-                <img src="/assets/team-member1.png" alt="" />
-                <figcaption>
-                  <strong>Liam Carter</strong>
-                  <span>Lead Frontend Engineer</span>
-                </figcaption>
-              </figure>
-              <figure class="member">
-                <img src="/assets/team-member3.png" alt="" />
-                <figcaption>
-                  <strong>Sophie Blake</strong>
-                  <span>Founder & CEO</span>
-                </figcaption>
-              </figure>
-              <figure class="member">
-                <img src="/assets/team-member2.png" alt="" />
-                <figcaption>
-                  <strong>Ethan Brooks</strong>
-                  <span>Customer Experience Manager</span>
-                </figcaption>
-              </figure>
+        <section class="form-container">
+          <form class="register form">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" name="email" placeholder="Email" required />
             </div>
-          </div>
+            <div class="form-group">
+              <label for="fullName">Name:</label>
+              <input type="text" name="name" placeholder="Name" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div class="form-controls">
+              <button type="submit">Submit</button>
+              <button type="reset">Clear</button>
+            </div>
+          </form>
         </section>
       </main>
-
       <footer class="site-footer">
         <div class="footer-container">
           <div class="footer-section">
@@ -146,6 +107,6 @@
         </div>
       </footer>
     </div>
-    <script type="module" src="/js/about.js"></script>
+    <script type="module" src="/js/register.js"></script>
   </body>
 </html>

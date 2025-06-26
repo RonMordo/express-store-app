@@ -10,7 +10,9 @@ const getProduct = async (productId) => {
     }
     return product;
   } catch (err) {
-    throw err;
+    const error = new Error("Error fetching product");
+    error.status = 500;
+    throw error;
   }
 };
 

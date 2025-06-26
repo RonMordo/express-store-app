@@ -8,19 +8,6 @@ export const createUserBodySchema = {
       errorMessage: "Email cant be empty",
     },
   },
-  username: {
-    in: ["body"],
-    isString: {
-      errorMessage: "Username must be a string",
-    },
-    notEmpty: {
-      errorMessage: "Username cant be empty",
-    },
-    isLength: {
-      options: { min: 5, max: 15 },
-      errorMessage: "Username must contain 5-15 characters",
-    },
-  },
   password: {
     in: ["body"],
     isString: {
@@ -34,13 +21,13 @@ export const createUserBodySchema = {
       errorMessage: "Password must contain 5-15 characters",
     },
   },
-  displayName: {
+  name: {
     in: ["body"],
     isString: {
-      errorMessage: "Display name must be a string",
+      errorMessage: "Name must be a string",
     },
     notEmpty: {
-      errorMessage: "Display name cant be empty",
+      errorMessage: "Name cant be empty",
     },
   },
 };
@@ -66,6 +53,18 @@ export const loginUserBodySchema = {
     isLength: {
       options: { min: 5, max: 15 },
       errorMessage: "Password must contain 5-15 characters",
+    },
+  },
+};
+
+export const getUserEmailSchema = {
+  email: {
+    in: ["query"],
+    isString: {
+      errorMessage: "Email must be a string",
+    },
+    notEmpty: {
+      errorMessage: "Email cant be empty",
     },
   },
 };
@@ -126,6 +125,18 @@ export const addCartItemBodySchema = {
     toInt: true,
     notEmpty: {
       errorMessage: "Quantity cant be empty",
+    },
+  },
+};
+
+export const addToFavoritesBodySchema = {
+  productId: {
+    in: ["body"],
+    isString: {
+      errorMessage: "Product id must be a string",
+    },
+    notEmpty: {
+      errorMessage: "Product id cant be empty",
     },
   },
 };

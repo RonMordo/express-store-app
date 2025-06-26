@@ -4,6 +4,7 @@ import { validateSchema, attachData } from "../utils/middlewares.js";
 import {
   createUserBodySchema,
   loginUserBodySchema,
+  getUserEmailSchema,
 } from "../utils/validationSchemas.js";
 import passport from "passport";
 import "../strategies/localStrategy.js";
@@ -67,5 +68,19 @@ router.get("/api/auth/status", (req, res) => {
   }
   res.status(200).json({ user: req.user });
 });
+
+router.get(
+  "/api/auth/check-email",
+  validateSchema(getUserEmailSchema),
+  attachData,
+  async (req, res) => {
+    try {
+      const exists = await usersService.emailExists(res.locals.data);
+      return res.status(200).json({ exists });
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
+);
 
 export default router;

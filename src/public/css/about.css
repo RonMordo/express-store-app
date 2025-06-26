@@ -33,9 +33,9 @@
   flex-direction: column;
   max-width: 240px;
   box-shadow: 0 3px 10px 1px rgb(90, 90, 90);
-  background-color: #f7f7f7;
   padding: 0.5rem;
   min-height: 200px;
+  border-radius: 10px;
 }
 
 .team-members {
@@ -49,13 +49,26 @@
 }
 
 .member {
-  min-width: 130px;
-  max-width: 150px;
-  min-height: 300px;
+  width: 200px;
+  height: 250px;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+.member img {
+  width: 150px;
+}
+
+figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+figcaption span {
+  font-size: 0.7rem;
 }

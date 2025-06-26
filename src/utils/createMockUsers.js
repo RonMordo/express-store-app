@@ -4,8 +4,8 @@ import { hashPassword } from "./helpers.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-// const dbUri = "mongodb://localhost/shopping-app";
-const dbUri = process.env.MONGODB_URI;
+const dbUri = "mongodb://localhost/shopping-app";
+// const dbUri = process.env.MONGODB_URI;
 
 const rawPasswords = [
   "password1",
@@ -23,53 +23,43 @@ const rawPasswords = [
 const mockUsers = [
   {
     email: "alice@example.com",
-    username: "alice123",
-    displayName: "Alice Johnson",
+    name: "Alice Johnson",
   },
   {
     email: "bob@example.com",
-    username: "bobby",
-    displayName: "Bob Smith",
+    name: "Bob Smith",
   },
   {
     email: "carol@example.com",
-    username: "carol_87",
-    displayName: "Carol Davis",
+    name: "Carol Davis",
   },
   {
     email: "dave@example.com",
-    username: "dave92",
-    displayName: "Dave Brown",
+    name: "Dave Brown",
   },
   {
     email: "eve@example.com",
-    username: "eve_tech",
-    displayName: "Eve Taylor",
+    name: "Eve Taylor",
   },
   {
     email: "frank@example.com",
-    username: "frankie",
-    displayName: "Frank Miller",
+    name: "Frank Miller",
   },
   {
     email: "grace@example.com",
-    username: "grace_hopper",
-    displayName: "Grace Hopper",
+    name: "Grace Hopper",
   },
   {
     email: "heidi@example.com",
-    username: "heidi01",
-    displayName: "Heidi Wilson",
+    name: "Heidi Wilson",
   },
   {
     email: "ivan@example.com",
-    username: "ivan_the_great",
-    displayName: "Ivan Anderson",
+    name: "Ivan Anderson",
   },
   {
     email: "judy@example.com",
-    username: "judy_dev",
-    displayName: "Judy Martinez",
+    name: "Judy Martinez",
   },
 ];
 

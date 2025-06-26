@@ -32,9 +32,9 @@ const createProductElement = ({
         </figcaption>
         <div class='add-to-cart'>
             <p><strong>${price}$</strong></p>
-            <div class='product-controls'>
-            <button data-product-id='${_id}' class='product-button add'><strong>Add to cart</strong></button>
-            <button class='favorite'><i class="fa-regular fa-star"></i></button>           
+            <div class='product-controls' data-product-id='${_id}'>
+              <button class='product-button add'><strong>Add to cart</strong></button>
+              <button class='favorite'><i class="fa-regular fa-star"></i></button>           
             </div>
         </div>
         <div class='loading-overlay' hidden>
@@ -83,11 +83,13 @@ const initShop = async () => {
     const products = await fetchProducts();
     products.forEach((product) => createProductElement(product));
     const addProductButtons = document.querySelectorAll(".product-button.add");
-    addProductButtons.forEach((button) =>
+    addProductButtons.forEach((button) => {
+      const controlsDiv = button.closest("div");
       button.addEventListener("click", (e) =>
-        onAddToCart(button.dataset.productId, e.target)
-      )
-    );
+        onAddToCart(controlsDiv.dataset.productId, e.target)
+      );
+    });
+    utils.favoriteButtonsInit();
   } catch (err) {
     console.log(err);
   }
