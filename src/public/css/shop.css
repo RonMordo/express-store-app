@@ -9,6 +9,106 @@
   padding: 2rem;
 }
 
+.filters-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 2rem;
+  padding-inline: 3rem;
+}
+
+.filters-container button {
+  background-color: rgb(43, 116, 252);
+  color: white;
+  font-size: 0.8rem;
+}
+
+.filter {
+  flex: 1;
+}
+
+.filter input:not([type="range"]) {
+  border: none;
+  border-radius: 10px;
+  padding: 0.1rem 0.5rem;
+  width: 100%;
+  min-width: 50px;
+}
+
+.filter .selected {
+  background-color: rgb(0, 68, 196);
+}
+
+.filter.category {
+  display: flex;
+  align-items: center;
+  flex: 2;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter.price {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.price-inputs {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.price-inputs div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.price-inputs label {
+  font-size: 0.6rem;
+  align-self: flex-start;
+}
+
+.price-inputs input {
+  flex: 1;
+  max-width: 100px;
+}
+
+.range {
+  position: relative;
+  width: 100%;
+  height: 30px;
+}
+
+.range input {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.sort-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
 .products-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);

@@ -1,26 +1,36 @@
 import express from "express";
 import Product from "../mongoose/schemas/product.js";
 import { getProductQuerySchema } from "../utils/validationSchemas.js";
-import { validateSchema } from "../utils/middlewares.js";
+import { attachData, validateSchema } from "../utils/middlewares.js";
 
 const router = express.Router();
 
 router.get(
   "/api/products",
   validateSchema(getProductQuerySchema),
+  attachData,
   async (req, res) => {
     try {
-      const allowedFilters = ["title", "category"];
-      const { filter, value, sort } = req.query;
+      const { title, category, sort, minPrice, maxPrice } = res.locals.data;
+
       const query = {};
       const sortOption = {};
-      if (filter && allowedFilters.includes(filter) && value) {
-        query[filter] = value;
+      if (title) {
+        query.title = { $regex: title, $options: "i" };
+      }
+
+      if (Array.isArray(category)) {
+        query.category = { $in: category };
+      } else if (category) {
+        query.category = category;
       }
       if (sort === "1") {
         sortOption.price = -1;
       } else if (sort === "2") {
         sortOption.price = 1;
+      }
+      if (minPrice && maxPrice) {
+        query.price = { $gte: Number(minPrice), $lte: Number(maxPrice) };
       }
       const products = await Product.find(query).sort(sortOption);
       return res.status(200).json(products);

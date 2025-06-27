@@ -70,25 +70,31 @@ export const getUserEmailSchema = {
 };
 
 export const getProductQuerySchema = {
-  filter: {
+  title: {
     in: ["query"],
     optional: true,
     isString: {
-      errorMessage: "Filter must be a string",
+      errorMessage: "Title must be a string",
     },
     notEmpty: {
-      errorMessage: "Filter cant be empty",
+      errorMessage: "Title cant be empty",
     },
   },
-  value: {
+  category: {
     in: ["query"],
     optional: true,
-    isString: {
-      errorMessage: "Filter value must be a string",
+    custom: {
+      options: (value) => {
+        if (Array.isArray(value)) {
+          return value.every(
+            (v) => typeof v === "string" && v.trim().length > 0
+          );
+        }
+        return typeof value === "string" && value.trim().length > 0;
+      },
     },
-    notEmpty: {
-      errorMessage: "Filter value cant be empty",
-    },
+    errorMessage:
+      "Category must be a non-empty string or an array of non-empty strings",
   },
   sort: {
     in: ["query"],
@@ -102,6 +108,20 @@ export const getProductQuerySchema = {
     },
     notEmpty: {
       errorMessage: "Sort value cant be empty",
+    },
+  },
+  minPrice: {
+    in: ["query"],
+    optional: true,
+    notEmpty: {
+      errorMessage: "Min price cant be empty",
+    },
+  },
+  maxPrice: {
+    in: ["query"],
+    optional: true,
+    notEmpty: {
+      errorMessage: "Max price cant be empty",
     },
   },
 };

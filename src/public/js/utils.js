@@ -1,9 +1,7 @@
 const checkAndRenderAuth = async () => {
   try {
-    console.log("inside checkAndRender");
     const authControllers = document.querySelectorAll(".auth a");
     const authContainer = document.querySelector(".auth");
-    console.log(authControllers);
     const response = await fetch("/api/auth/status");
     if (!response.ok) {
       throw new Error("Error fetching status");

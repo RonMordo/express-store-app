@@ -51,6 +51,35 @@
         </section>
         <section class="interface">
           <h2>Happy Shopping!</h2>
+          <div class="filters-container">
+            <div class="filter">
+              <input name="title-filter" type="text" placeholder="Title" />
+            </div>
+            <div class="filter category"></div>
+            <div class="filter price">
+              <div class="price-inputs">
+                <div>
+                  <label for="minPrice-filter">Minimum</label>
+                  <input type="number" name="minPrice-filter" />
+                </div>
+                <div>
+                  <label for="maxPrice-filter">Maximum</label>
+                  <input type="number" name="maxPrice-filter" />
+                </div>
+              </div>
+              <div class="range">
+                <input type="range" name="startRange" step="1" />
+                <input type="range" name="endRange" step="1" />
+              </div>
+              <div class="sort">
+                <span>Sort price:</span>
+                <div class="sort-controls">
+                  <button data-sort="1">High to Low</button>
+                  <button data-sort="2">Low to High</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="products-container"></div>
         </section>
       </main>
