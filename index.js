@@ -93,6 +93,10 @@ app.get("/favorites", (req, res) => {
   res.status(200).sendFile(path.join(HTML_PATH, "favorites.html"));
 });
 
+app.get("/customer-support", (req, res) => {
+  res.status(200).sendFile(path.join(HTML_PATH, "customer-support.html"));
+});
+
 // Start listening for incoming requests
 app.listen(PORT, () => {
   console.log(chalk.green(`Server listening on PORT: ${PORT}`));

@@ -1,5 +1,11 @@
 import utils from "/js/utils.js";
 
+const resetFormFields = (inputs) => {
+  inputs.forEach((input) => {
+    input.classList = "";
+  });
+};
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
@@ -29,13 +35,24 @@ const handleSubmit = async (e) => {
 };
 
 const init = () => {
+  const inputElements = document.querySelectorAll("input");
   document
     .querySelector(".register.form")
     .addEventListener("submit", (e) => handleSubmit(e));
-  const inputElements = document.querySelectorAll("input");
-  inputElements.forEach((input) =>
-    input.addEventListener("blur", (e) => utils.validateInput(e))
-  );
+  document
+    .querySelector(".register.form")
+    .addEventListener("reset", () => resetFormFields(inputElements));
+  inputElements.forEach((input) => {
+    input.addEventListener("blur", (e) => utils.validateInput(e));
+    input.addEventListener("input", () => {
+      if (input.value.length > 0) {
+        input.classList.add("with-value");
+      } else {
+        input.classList.remove("with-value");
+      }
+      console.log(...input.classList);
+    });
+  });
 };
 
 document.addEventListener("DOMContentLoaded", init);

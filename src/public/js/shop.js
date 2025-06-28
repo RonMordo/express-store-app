@@ -8,6 +8,8 @@ const filterState = {
   maxPrice: null,
 };
 
+let isLoggedIn = false;
+
 const fetchProducts = async (queryString) => {
   try {
     let response = null;
@@ -44,7 +46,7 @@ const createProductElement = ({
             <p><strong>Rating:</strong> ${rating}</p>
         </figcaption>
         <div class='add-to-cart'>
-            <p><strong>${price}$</strong></p>
+            <p><strong>${price.toFixed(2)}$</strong></p>
             <div class='product-controls' data-product-id='${_id}'>
               <button class='product-button add'><strong>Add to cart</strong></button>
               <button class='favorite'><i class="fa-regular fa-star"></i></button>           
@@ -100,7 +102,9 @@ const renderProducts = (products) => {
       onAddToCart(controlsDiv.dataset.productId, e.target)
     );
   });
-  utils.favoriteButtonsInit();
+  if (isLoggedIn) {
+    utils.favoriteButtonsInit();
+  }
 };
 
 const updateRange = (lowPrice, highPrice, lowRangeBar, highRangeBar) => {
@@ -221,6 +225,7 @@ const initFilters = (categories, minPrice, maxPrice) => {
 const initShop = async () => {
   utils.checkAndRenderAuth();
   const products = await fetchProducts();
+  isLoggedIn = await utils.getLoggedinUser();
   renderProducts(products);
   const categories = [];
   let minPrice = Infinity;

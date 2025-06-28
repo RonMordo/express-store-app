@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="stylesheet" href="/css/customer-support.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Customer Support | BitBasket</title>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <nav>
+          <div class="nav-left">
+            <a href="/"><img src="/assets/logo.png" alt="Logo" /></a>
+          </div>
+          <ul class="nav-center">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/customer-support">Customer Support</a></li>
+          </ul>
+          <div class="nav-right">
+            <a href="/favorites" class="favorites"
+              ><i class="fa-regular fa-star"></i
+            ></a>
+            <a href="/cart"><img src="/assets/cart.png" alt="Cart icon" /></a>
+            <a class="profile-picture-link" href="/profile"
+              ><img src="/assets/guest-profile.png" alt="Profile picture"
+            /></a>
+            <div class="auth">
+              <a href="/login">Login</a>
+              <a href="/register">Register</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section class="banner">
+          <div class="banner-content">
+            <h1>Bit<span>B</span>asket</h1>
+            <p class="slogen">A new <span>HOME</span> for shopping</p>
+          </div>
+        </section>
+
+        <section class="support content">
+          <h2>Customer Support</h2>
+          <p>
+            We're here to help! If you have any questions or issues, feel free
+            to reach out.
+          </p>
+
+          <div class="support-options">
+            <div class="support-box">
+              <i class="fa-solid fa-envelope"></i>
+              <h3>Email Us</h3>
+              <p>support@bitbasket.com</p>
+            </div>
+
+            <div class="support-box">
+              <i class="fa-solid fa-phone"></i>
+              <h3>Call Us</h3>
+              <p>+1 (555) 123-4567</p>
+            </div>
+
+            <div class="support-box">
+              <i class="fa-solid fa-truck"></i>
+              <h3>Track Order</h3>
+              <div class="track-orders">
+                <span>Use our delivery partners'</span>
+                <div class="track-links">
+                  <a href="https://www.ups.com/track" target="_blank">UPS</a>
+                  <a href="https://www.dhl.com/track" target="_blank">DHL</a>
+                  <a
+                    href="https://www.fedex.com/apps/fedextrack/"
+                    target="_blank"
+                    >FedEx</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="faq">
+            <div class="faq-card">
+              <div class="question">
+                <span>1. Q: How long does delivery take?</span>
+                <button><i class="fa-solid fa-circle-chevron-down"></i></button>
+              </div>
+              <div class="answer hidden">
+                A: Most orders are delivered within 3–7 business days. Express
+                options are available at checkout for faster delivery.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="question">
+                <span>2. Q: How can I track my order?</span>
+                <button><i class="fa-solid fa-circle-chevron-down"></i></button>
+              </div>
+              <div class="answer hidden">
+                A: Once your order ships, you'll receive a tracking link via
+                email. You can also use our courier partners’ websites: UPS,
+                DHL, or FedEx.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="question">
+                <span>3. Q: What is your return policy? </span>
+                <button><i class="fa-solid fa-circle-chevron-down"></i></button>
+              </div>
+              <div class="answer hidden">
+                A: You can return any product within 14 days of delivery, as
+                long as it's unused and in its original packaging. Visit the
+                Returns section in your profile to start a return.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="question">
+                <span
+                  >4. Q: I received a damaged product. What should I do?
+                </span>
+                <button><i class="fa-solid fa-circle-chevron-down"></i></button>
+              </div>
+              <div class="answer hidden">
+                A: We're sorry! Please contact us within 48 hours of delivery
+                with photos of the damage, and we’ll help you with a replacement
+                or refund.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="question">
+                <span>5. Q: How do I contact customer support? </span>
+                <button><i class="fa-solid fa-circle-chevron-down"></i></button>
+              </div>
+              <div class="answer hidden">
+                A: You can reach us at support@bitbasket.com or call +1 (555)
+                123-4567 during business hours (Mon–Fri, 9 AM–6 PM EST).
+              </div>
+            </div>
+          </div>
+          <div class="contact">
+            <h3>Send us a message</h3>
+            <form class="support-form">
+              <div class="form-fields">
+                <div class="left">
+                  <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="right">
+                  <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea
+                      name="message"
+                      placeholder="Type your message..."
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="form-controls">
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h5 class="footer-title">Bit<span>B</span>asket</h5>
+            <p class="slogen">A new <span>Home</span> for shopping</p>
+          </div>
+          <div class="footer-section links">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/shop">Shop</a></li>
+              <li><a href="/cart">Cart</a></li>
+              <li><a href="/customer-support">Customer Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-section contact">
+            <h5>Contact</h5>
+            <div class="details">
+              <p>Email: support@bitbasket.com</p>
+              <p>Phone: +1 (555) 123-4567</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 BitBasket. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/js/customer-support.js"></script>
+  </body>
+</html>

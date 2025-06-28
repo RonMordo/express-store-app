@@ -172,3 +172,33 @@ export const deleteCartItemSchema = {
     },
   },
 };
+
+export const createMessageBodySchema = {
+  email: {
+    in: ["body"],
+    isString: {
+      errorMessage: "Email must be a string",
+    },
+    notEmpty: {
+      errorMessage: "Email cant be empty",
+    },
+  },
+  name: {
+    in: ["body"],
+    isString: {
+      errorMessage: "Name must be a string",
+    },
+    notEmpty: {
+      errorMessage: "Name cant be empty",
+    },
+  },
+  message: {
+    in: ["body"],
+    isString: {
+      errorMessage: "Message must be a string",
+    },
+    notEmpty: {
+      errorMessage: "Message cant be empty",
+    },
+  },
+};

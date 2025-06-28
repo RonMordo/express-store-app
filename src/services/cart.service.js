@@ -3,7 +3,7 @@ import productsService from "./products.service.js";
 
 export const fetchCart = async ({ userId, sessionId }) => {
   const filter = userId ? { userId } : { sessionId };
-  return await Cart.findOne(filter);
+  return await Cart.findOne(filter).populate("items.productId");
 };
 
 export const getCartItems = async ({ userId, sessionId }) => {
@@ -29,9 +29,13 @@ export const addCartItem = async ({
 }) => {
   const cart = await fetchCart({ userId, sessionId });
   if (cart) {
-    const existingItem = cart.items.find((item) => item.id === productId);
+    console.log(cart);
+
+    const existingItem = cart.items.find(
+      (item) => item.productId._id.toString() === productId.toString()
+    );
     if (existingItem) {
-      existingItem.quantity += quantity;
+      existingItem.quantity = quantity;
     } else {
       cart.items.push({
         productId,

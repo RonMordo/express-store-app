@@ -29,6 +29,8 @@
   padding: 0.3rem;
   border-radius: 10px;
   color: white;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
 }
 
 input:focus {
@@ -37,6 +39,11 @@ input:focus {
 
 .form-group input::placeholder {
   color: white;
+}
+
+.form-group .with-value {
+  background-color: white;
+  color: black;
 }
 
 .form-controls {
@@ -58,10 +65,12 @@ input:focus {
 
 .form-group .input-error {
   border: 2px solid red;
+  transition: border 0.3s ease;
 }
 
 .form-group .input-ok {
   border: 2px solid rgb(15, 196, 15);
+  transition: border 0.3s ease;
 }
 
 main {

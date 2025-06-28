@@ -90,20 +90,33 @@ const validateInput = async (e) => {
   try {
     switch (name) {
       case "email":
-        const emailExists = await checkEmail(value);
-        if (emailExists || !validity.valid || validity.valueMissing) {
-          setInvalid();
+        if (window.location.href.split("/").pop() !== "customer-support") {
+          const emailExists = await checkEmail(value);
+          if (emailExists || !validity.valid || validity.valueMissing) {
+            setInvalid();
+          } else {
+            setValid();
+          }
         } else {
-          setValid();
+          if (!validity.valid || validity.valueMissing) {
+            console.log("before, Invalid if", ...classList);
+            setInvalid();
+            console.log("After, invlaid if", ...classList);
+          } else {
+            console.log("before, valid if", ...classList);
+            setValid();
+            console.log("After, valid if", ...classList);
+          }
         }
         break;
-
       case "password":
         value.length < 6 ? setInvalid() : setValid();
         break;
-
+      case "message":
+        value.split(" ").length < 5 ? setInvalid() : setValid();
+        break;
       default:
-        const isInvalid = /[^a-zA-Z]/.test(value) || validity.valueMissing;
+        const isInvalid = /[^a-zA-Z ]/.test(value) || validity.valueMissing;
         isInvalid ? setInvalid() : setValid();
     }
   } catch (err) {
@@ -187,6 +200,19 @@ const favoriteButtonsInit = async () => {
   });
 };
 
+const getLoggedinUser = async () => {
+  try {
+    const response = await fetch("/api/auth/status");
+    if (!response.ok) {
+      throw new Error("Error checking login status");
+    }
+    const user = await response.json();
+    return user.user;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export default {
   checkAndRenderAuth,
   login,
@@ -195,4 +221,5 @@ export default {
   fetchFavoriteItems,
   removeProductFromFavorites,
   favoriteButtonsInit,
+  getLoggedinUser,
 };

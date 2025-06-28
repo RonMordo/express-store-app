@@ -66,7 +66,9 @@ router.get("/api/auth/status", (req, res) => {
   if (!req.user) {
     return res.status(200).json({ user: null });
   }
-  res.status(200).json({ user: req.user });
+  res
+    .status(200)
+    .json({ user: { email: req.user.email, name: req.user.name } });
 });
 
 router.get(

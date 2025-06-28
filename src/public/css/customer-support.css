@@ -1,0 +1,176 @@
+.support.content > div {
+  width: 85%;
+}
+
+.support.content .support-options {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 0;
+}
+
+.support-box {
+  flex: 1;
+  min-width: 270px;
+}
+
+.track-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.track-links a {
+  font-weight: 600;
+  color: #384455;
+}
+
+.support.content .faq {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.faq .faq-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 3px 10px 1px rgb(90, 90, 90);
+  border-radius: 10px;
+  padding: 0.2rem 0.5rem;
+  text-align: left;
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.question span {
+  flex: 1;
+}
+
+.question button {
+  color: rgb(43, 116, 252);
+}
+
+.answer {
+  max-height: 500px;
+  margin-top: 1rem;
+  transition: max-height 1s ease, margin-top 0.4s ease;
+  background-color: #cfcfcf;
+  padding-inline: 0.5rem;
+  border-radius: 10px;
+}
+
+.answer.hidden {
+  overflow: hidden;
+  max-height: 0;
+  margin-top: 0;
+  transition: max-height 0.6s ease, margin-top 0.4s ease;
+}
+
+.support-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 80%;
+}
+
+.form-fields {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.left {
+  min-width: 14rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.right {
+  min-width: 14rem;
+  height: 6.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.2rem;
+  height: 100%;
+  width: 100%;
+}
+
+.form-group label {
+  align-self: flex-start;
+  font-size: 0.8rem;
+}
+
+.form-group input,
+textarea {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding-inline: 0.5rem;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+}
+
+textarea {
+  height: 100%;
+  font-size: 0.8rem;
+  resize: none;
+}
+
+.form-controls {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-controls button {
+  border-radius: 5px;
+  padding: 0.2rem;
+  min-width: 4rem;
+  color: white;
+  font-weight: 400;
+}
+
+button[type="submit"] {
+  background-color: rgb(43, 116, 252);
+}
+
+button[type="reset"] {
+  background-color: rgb(109, 160, 255);
+}
+
+.form-group .input-error {
+  border: 2px solid red;
+  transition: border 1s ease;
+}
+
+.form-group .input-ok {
+  border: 2px solid rgb(15, 196, 15);
+  transition: border 0.3s ease;
+}
